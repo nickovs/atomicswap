@@ -1,0 +1,6 @@
+*~
+venv
+.idea
+/src/atomicswap.egg-info/
+/build/
+/dist/
