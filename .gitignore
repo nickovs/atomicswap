@@ -1,6 +1,15 @@
+# Editor backup files
 *~
-venv
+
+# IDE and test environment
 .idea
-/src/atomicswap.egg-info/
+venv
+
+# Build and install files
+/src/*.egg-info/
 /build/
 /dist/
+__pycache__
+
+# Test caches
+.tox

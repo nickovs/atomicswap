@@ -1,10 +1,9 @@
-# Implement atomic file swap/exchange for Linux and Darwin (macOS).
+# Implement atomic file swap/exchange for Darwin (macOS).
 
 # Copyright 2022 Nicko van Someren
 # SPDX: MIT
 # See LICENSE.md for the full license text.
 
-from sys import platform
 from ctypes import CDLL, get_errno
 from os import strerror
 
@@ -13,18 +12,10 @@ from pathlib import PurePath
 
 PathLike = Union[str, PurePath]
 
-if platform == "darwin":
-    libc = CDLL("libc.dylib", use_errno=True)
-    swap_function = libc.renameatx_np
-    SWAP_FLAGS = 2
-    SWAP_AT_CWD = -2
-elif platform == "linux":
-    libc = CDLL("libc.so.6", use_errno=True)
-    swap_function = libc.renameat2
-    SWAP_FLAGS = 2
-    SWAP_AT_CWD = -100
-else:
-    raise NotImplementedError("This file only supports Linux and macOS")
+libc = CDLL("libc.dylib", use_errno=True)
+swap_function = libc.renameatx_np
+SWAP_FLAGS = 2
+SWAP_AT_CWD = -2
 
 
 def swap(

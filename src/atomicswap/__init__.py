@@ -17,8 +17,10 @@ before or after).
 
 from sys import platform
 
-if platform == "darwin" or platform == "linux":
-    from .posix_ish import swap
+if platform == "darwin":
+    from .macos import swap
+elif platform == "linux":
+    from .linux import swap
 else:
     raise NotImplementedError(f"Platform '{platform} is not currently supported")
 
