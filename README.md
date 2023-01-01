@@ -1,7 +1,8 @@
 # Atomic file swapping
 
-Sadly, no, this is not a nuclear-powered utility to swap files. `atomicswap`
-is a Python module that implements the swapping of two files on a filesystem
+Sadly, this is not a nuclear-powered utility to swap files. 
+
+`atomicswap` is a Python module that implements the swapping of two files on a filesystem
 in a single operation that can't be broken up; either the entire operation
 completes correctly or none of it completes. This prevents the filesystem
 from being left in an inconsistent state and avoids certain race conditions.
