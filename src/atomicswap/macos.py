@@ -5,12 +5,7 @@
 # See LICENSE.md for the full license text.
 
 from ctypes import CDLL, get_errno
-from os import strerror
-
-from typing import Union
-from pathlib import PurePath
-
-PathLike = Union[str, PurePath]
+from os import strerror, PathLike, fsencode
 
 libc = CDLL("libc.dylib", use_errno=True)
 swap_function = libc.renameatx_np
@@ -30,8 +25,8 @@ def swap(
     The function returns None, or raises an OSError is an error occurs.
     """
     result = swap_function(
-        first_dir_fd, str(first).encode(),
-        second_dir_fd, str(second).encode(),
+        first_dir_fd, fsencode(first),
+        second_dir_fd, fsencode(second),
         SWAP_FLAGS
     )
     if result != 0:
