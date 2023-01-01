@@ -1,12 +1,12 @@
 # Atomic file swapping
 
 Sadly, no, this is not a nuclear-powered utility to swap files. `atomicswap`
-is a Python module that implements the swapping of two files no a filesystem
+is a Python module that implements the swapping of two files on a filesystem
 in a single operation that can't be broken up; either the entire operation
 completes correctly or none of it completes. This prevents the filesystem
 from being left in an inconsistent state and avoids certain race conditions.
 
-The API is very simple; only a single function is provided: `swap()` The
+The API is very simple; only a single `swap()` function is provided.  The
 function takes two file paths for the two files to be swapped. In the event
 that either path is a relative path, you may also provide file descriptors
 for directories that the relative paths should start from; if either is
@@ -38,4 +38,4 @@ possibility in the future.
 
 ## License
 
-`atomicswap` is released under the 
+`atomicswap` is released under the MIT license. See LICENSE.md for details.
