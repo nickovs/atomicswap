@@ -4,13 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "atomicswap"
-version = "0.1.3"
+version = "0.2.0-alpha"
 authors = [
   { name="Nicko van Someren", email="nicko@nicko.org" },
 ]
 description = "A simple API to swap two files on a filesystem atomically"
 readme = "README.md"
 requires-python = ">=3.7"
+dependencies = ['pywin32; sys_platform == "win32"']
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",

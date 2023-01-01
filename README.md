@@ -34,8 +34,17 @@ swap(base_dir / "active", base_dir / "standby")
 
 ## Platform support
 
-Currently `atomicswap` supports Linux and macOS. A Windows version is a
-possibility in the future.
+Currently `atomicswap` supports Linux and macOS. There is also a Windows
+implementation but since I don't have a Windows system this is completely
+untested.
+
+
+## Dependencies
+
+On both macOS and Linux `atomicswap` is not dependent on any non-standard
+libraries or third party packages. On Windows it requires
+[`pywin32`](https://pypi.org/project/pywin32/).
+
 
 ## Implementation details
 
@@ -44,20 +53,20 @@ atomic swapping of the names of two files. On Linux the system call is named
 `renameat2` while on macOS it is named `renameatx_np` but the operation is
 much the same: passing a specific flag to the extended version of the rename
 function causes it to swap the names of two existing files rather than just
-changing the name of one file. One macOS the `renameatx_np` is exposed in the
+changing the name of one file. On macOS the `renameatx_np` is exposed in the
 standard C library and can be called directly. Not all Linux distributions expose
 the `renameat2` system call in their C library so the `syscall` wrapper function
 is used instead.
 
 While there is no equivalent single function to perform the same operation on
-Windows, it should be possible to extend this module to support Windows using
-the Windows
+Windows, it is possible to perform an atomic swap operation using the Windows
 [Kernel Transaction Manager](https://learn.microsoft.com/en-us/windows/win32/ktm/kernel-transaction-manager-portal) and
 [Transactional NTFS](https://learn.microsoft.com/en-us/windows/win32/fileio/transactional-ntfs-portal).
 Unfortunately Microsoft have stated that _"TxF may not be available in future versions of 
 Microsoft Windows"_, which potentially limits the utility of this sort of
-implementation. Furthermore, the author doesn't have a Windows system on which
-to test a Windows code, but a PR would be welcome.
+implementation. The implementation here is untested because I don't have a
+Windows system on which to test it.
+
 
 ## License
 

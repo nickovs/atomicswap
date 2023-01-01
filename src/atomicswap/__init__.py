@@ -21,6 +21,8 @@ if platform == "darwin":
     from .macos import swap
 elif platform == "linux":
     from .linux import swap
+elif platform == "win32":
+    from .windows import swap
 else:
     raise NotImplementedError(f"Platform '{platform} is not currently supported")
 
