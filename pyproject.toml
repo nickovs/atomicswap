@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "atomicswap"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
   { name="Nicko van Someren", email="nicko@nicko.org" },
 ]
@@ -14,7 +14,8 @@ requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux"
 ]
 
 [project.urls]
