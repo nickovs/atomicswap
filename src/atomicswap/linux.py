@@ -6,12 +6,25 @@
 
 from ctypes import CDLL, get_errno
 from os import strerror, PathLike, fsencode
+from platform import machine
+
+SYSCALL_ARCH_MAP = {
+    "x86_64": 316,
+    "armv7l": 382,
+    "aarch64": 276,
+    "i386": 353,
+}
 
 libc = CDLL("libc.so.6", use_errno=True)
 syscall_function = libc.syscall
-SYSCALL_RENAMEAT2 = 316
+ARCH = machine()
 SWAP_FLAGS = 2
 SWAP_AT_CWD = -100
+
+if ARCH not in SYSCALL_ARCH_MAP:
+    raise NotImplementedError(f"Unsupported architecture: {ARCH}")
+
+SYSCALL_RENAMEAT2 = SYSCALL_ARCH_MAP[ARCH]
 
 
 def swap(

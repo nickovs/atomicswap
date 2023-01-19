@@ -14,6 +14,20 @@ for directories that the relative paths should start from; if either is
 missing then the path is relative to the current working directory. Paths
 can be provided either as Python strings or `pathlib` paths.
 
+## Installation
+
+The latest stable version of `atomicswap` can be installed from the [Python
+Package Index](https://pypi.org) using `pip` in the normal manner:
+```
+pip install atomicswap
+```
+If you want to try out the latest code then you can install it from the
+GitHub repository:
+```
+pip install atomicswap@git+https://github.com/nickovs/atomicswap.git
+```
+
+
 ## Example
 
 Swapping the files `/etc/something/active` and `/etc/something/standby` in 
