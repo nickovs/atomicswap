@@ -18,6 +18,10 @@ def swap(first: PathLike, second: PathLike) -> None:
     The function returns None, or raises an OSError is an error occurs.
     """
     common = commonpath([first, second])
+    first = str(first)
+    second = str(second)
+    common = str(common)
+
     with TemporaryDirectory(dir=common) as temp_dir:
         temp_path = join(temp_dir, "temp_file")
 
