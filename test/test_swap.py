@@ -1,6 +1,9 @@
 # Tests for atomicswap
 
 import os
+import sys
+import pytest
+
 from atomicswap import swap
 
 
@@ -61,6 +64,7 @@ def test_relative_cwd(tmp_path):
     assert(b_contents == A_DUMMY)
 
 
+@pytest.mark.skipif(sys.platform == 'win32', reason="No supported on Windows")
 def test_relative_dir_fd(tmp_path):
     dir_a = tmp_path / "A"
     dir_b = tmp_path / "B"
@@ -84,6 +88,7 @@ def test_relative_dir_fd(tmp_path):
     assert(b_contents == A_DUMMY)
 
 
+@pytest.mark.skipif(sys.platform == 'win32', reason="No supported on Windows")
 def test_relative_dir_mixed(tmp_path):
     os.chdir(tmp_path)
 
