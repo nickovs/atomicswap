@@ -1,4 +1,4 @@
-# Implement atomic file swap/exchange for Windows.
+"""Implement atomic file swap/exchange for Windows."""
 
 # Copyright 2022 Nicko van Someren
 # SPDX: MIT

@@ -29,4 +29,4 @@ else:
 # exchange is just an alias for swap
 exchange = swap
 
-__all__ = [exchange, swap]
+__all__ = ["exchange", "swap"]

@@ -1,0 +1,5 @@
+# PyLint settings
+
+[default]
+# Most platforms won't be able to handle the Windows-specific imports, so ignore when linting
+ignored-modules=win32file,win32transaction

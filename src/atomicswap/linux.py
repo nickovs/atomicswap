@@ -1,4 +1,4 @@
-# Implement atomic file swap/exchange for Linux.
+"""Implement atomic file swap/exchange for Linux."""
 
 # Copyright 2022 Nicko van Someren
 # SPDX: MIT
@@ -28,9 +28,12 @@ SYSCALL_RENAMEAT2 = SYSCALL_ARCH_MAP[ARCH]
 
 
 def swap(
-        first: PathLike, second: PathLike,
-        *,
-        first_dir_fd: int = SWAP_AT_CWD, second_dir_fd: int = SWAP_AT_CWD) -> None:
+    first: PathLike,
+    second: PathLike,
+    *,
+    first_dir_fd: int = SWAP_AT_CWD,
+    second_dir_fd: int = SWAP_AT_CWD,
+) -> None:
     """Atomically swap the files at the paths `first` and `second`. If either path is
     relative then these will be relative to the current working directory unless
     `first_dir_fd` and/or `second_dir_fd` are provided, in which case they must be
@@ -38,11 +41,14 @@ def swap(
 
     The function returns None, or raises an OSError is an error occurs.
     """
+    # pylint: disable=duplicate-code
     result = syscall_function(
         SYSCALL_RENAMEAT2,
-        first_dir_fd, fsencode(first),
-        second_dir_fd, fsencode(second),
-        SWAP_FLAGS
+        first_dir_fd,
+        fsencode(first),
+        second_dir_fd,
+        fsencode(second),
+        SWAP_FLAGS,
     )
     if result != 0:
         errno = get_errno()
