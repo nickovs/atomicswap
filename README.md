@@ -1,5 +1,7 @@
 # Atomic file swapping
 
+![Test status](https://github.com/nickovs/atomicswap/actions/workflows/run_tests.yaml//badge.svg)
+
 Sadly, this is not a nuclear-powered utility to swap files. 
 
 `atomicswap` is a Python module that implements the swapping of two files on a filesystem
