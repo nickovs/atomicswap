@@ -4,10 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "atomicswap"
-version = "0.2.2"
 authors = [
   { name="Nicko van Someren", email="nicko@nicko.org" },
 ]
+dynamic = ["version"]
+
 description = "A simple API to swap two files on a filesystem atomically"
 readme = "README.md"
 requires-python = ">=3.7"
@@ -18,6 +19,9 @@ classifiers = [
     "Operating System :: MacOS",
     "Operating System :: POSIX :: Linux"
 ]
+
+[tool.setuptools.dynamic]
+version = {attr = "atomicswap.__version__"}
 
 [project.urls]
 "Homepage" = "https://github.com/nickovs/atomicswap"

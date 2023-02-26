@@ -17,6 +17,8 @@ before or after).
 
 from sys import platform
 
+__version__ = "0.2.3"
+
 if platform == "darwin":
     from .macos import swap
 elif platform == "linux":
@@ -29,4 +31,4 @@ else:
 # exchange is just an alias for swap
 exchange = swap
 
-__all__ = ["exchange", "swap"]
+__all__ = ["__version__", "exchange", "swap"]
