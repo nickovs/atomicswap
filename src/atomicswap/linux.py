@@ -10,6 +10,7 @@ from platform import machine
 
 SYSCALL_ARCH_MAP = {
     "x86_64": 316,
+    "armv6l": 382,
     "armv7l": 382,
     "aarch64": 276,
     "i386": 353,

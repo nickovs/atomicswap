@@ -48,10 +48,9 @@ swap(base_dir / "active", base_dir / "standby")
 
 ## Platform support
 
-Currently `atomicswap` supports Linux and macOS. There is also a Windows
-implementation but since I don't have a Windows system this is completely
-untested.
-
+Currently `atomicswap` supports Linux, macOS and Windows. Note that the Windows
+implementation does not support specifying the base directories for relative paths
+using directory file descriptors.
 
 ## Dependencies
 
@@ -64,7 +63,7 @@ libraries or third party packages. On Windows it requires
 
 Both Linux and macOS have kernel system calls that provide the simultaneous,
 atomic swapping of the names of two files. On Linux the system call is named
-`renameat2` while on macOS it is named `renameatx_np` but the operation is
+`renameat2` while on macOS it is named `renameatx_np`, but the operation is
 much the same: passing a specific flag to the extended version of the rename
 function causes it to swap the names of two existing files rather than just
 changing the name of one file. On macOS the `renameatx_np` is exposed in the
@@ -78,8 +77,7 @@ Windows, it is possible to perform an atomic swap operation using the Windows
 [Transactional NTFS](https://learn.microsoft.com/en-us/windows/win32/fileio/transactional-ntfs-portal).
 Unfortunately Microsoft have stated that _"TxF may not be available in future versions of 
 Microsoft Windows"_, which potentially limits the utility of this sort of
-implementation. The implementation here is untested because I don't have a
-Windows system on which to test it.
+implementation.
 
 
 ## License
